@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">bLife</string>
+    <string name="home_menu_name">Home</string>
+    <string name="donator_menu_name">Doador</string>
+    <string name="donations_menu_name">Doações</string>
+    <string name="saidas_menu_name">Saidas</string>
+    <string name="campanhas_menu_name">Campanhas</string>
+    <string name="rankings_menu_name">Rankings</string>
+</resources>
