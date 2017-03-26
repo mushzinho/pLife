@@ -36,4 +36,11 @@ public class Doador extends SugarRecord {
     public String getContato() {
         return contato;
     }
+
+    @Override
+    public String toString() {
+        return "Doador{" +
+                "nome='" + nome + '\'' +
+                '}';
+    }
 }

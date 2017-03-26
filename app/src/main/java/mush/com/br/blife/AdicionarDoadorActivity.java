@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import mush.com.br.blife.model.Doador;
+
 
 public class AdicionarDoadorActivity extends AppCompatActivity {
 
@@ -57,7 +59,10 @@ public class AdicionarDoadorActivity extends AppCompatActivity {
                     Toast.makeText(this, "Todas as informações são obrigatórias", Toast.LENGTH_LONG).show();
                 }else{
                     int idade = Integer.parseInt(idadeString);
-                    Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
+                    Doador doador = new Doador(nome, sexo, idade , telefone);
+                    long what = doador.save();
+                    Toast.makeText(this, "Doador Salvo" + what, Toast.LENGTH_LONG).show();
+                    finish();
 
                 }
                 break;
