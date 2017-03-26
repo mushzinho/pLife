@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.context.IconicsLayoutInflater;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ResideMenuItem mSaidas;
     private ResideMenuItem mCampanhas;
     private ResideMenuItem mRankings;
+    private Fragment mSelectedFrament;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
@@ -41,9 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         if(savedInstanceState == null){
-            displayHomeFragment(new HomeFragment());
+            mSelectedFrament = new HomeFragment();
+           displayHomeFragment(mSelectedFrament);
         }
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -105,10 +107,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == mHomeItem){
-            changeFragment(new HomeFragment());
+            mSelectedFrament = new HomeFragment();
+            changeFragment(mSelectedFrament);
 
         }else if(view == mDoadorItem) {
-            changeFragment(new DoadorFragment());
+            mSelectedFrament = new DoadorFragment();
+            changeFragment(mSelectedFrament);
 
         }else if(view == mDonation){
             changeFragment(new DonationsFragment());
@@ -145,5 +149,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public ResideMenu getResideMenu(){
         return mResideMenu;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mSelectedFrament instanceof DoadorFragment){
+            MaterialSheetFab materialSheetFab = ((DoadorFragment) mSelectedFrament).getMaterialSheet();
+
+            if( materialSheetFab.isSheetVisible() ){
+                materialSheetFab.hideSheet();
+            }else{
+                super.onBackPressed();
+            }
+        }else{
+            super.onBackPressed();
+        }
+
     }
 }

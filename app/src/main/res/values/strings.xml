@@ -6,4 +6,18 @@
     <string name="saidas_menu_name">Saidas</string>
     <string name="campanhas_menu_name">Campanhas</string>
     <string name="rankings_menu_name">Rankings</string>
+    <string name="doador_add_doador">Adicionar Doador</string>
+
+    <string-array name="sexos">
+        <item>Masculino</item>
+        <item>Feminino</item>
+    </string-array>
+
+    <string name="adicionar_doador_titulo">Adicionar Doador</string>
+    <string name="add_doador_nome_hint">Nome</string>
+    <string name="add_doador_idade_hint">Idade</string>
+    <string name="add_doador_label_for_spinner">Sexo:</string>
+    <string name="telefone">Telefone</string>
+    <string name="add_doador_menu_salvar">Salvar</string>
+
 </resources>

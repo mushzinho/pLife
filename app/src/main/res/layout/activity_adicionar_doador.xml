@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mush.com.br.blife.AdicionarDoadorActivity"
+    tools:showIn="@layout/activity_adicionar_doador">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/add_doador_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:titleTextColor="@color/colorAccent"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/et_add_doador_nome"
+            android:hint="@string/add_doador_nome_hint" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/et_add_doador_idade"
+            android:hint="@string/add_doador_idade_hint" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/sp_sexos"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:text="@string/add_doador_label_for_spinner"/>
+        <Spinner
+            android:id="@+id/sp_sexos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/sexos">
+
+        </Spinner>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/et_add_doador_contato"
+            android:hint="@string/telefone"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

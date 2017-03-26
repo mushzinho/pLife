@@ -37,5 +37,6 @@ dependencies {
     compile "com.mikepenz:iconics-core:2.8.2@aar"
     compile 'com.mikepenz:google-material-typeface:3.0.1.0.original@aar'
     compile 'com.mikepenz:fontawesome-typeface:4.7.0.0@aar'
+    compile 'com.gordonwong:material-sheet-fab:1.2.1'
     testCompile 'junit:junit:4.12'
 }
