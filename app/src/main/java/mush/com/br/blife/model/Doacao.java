@@ -5,7 +5,7 @@ import com.orm.dsl.Ignore;
 
 import java.util.Date;
 
-public class Donations extends SugarRecord {
+public class Doacao extends SugarRecord {
 
     private int quantidadeBolsas;
     private Date data;
@@ -14,10 +14,10 @@ public class Donations extends SugarRecord {
     @Ignore
     public static final String LIVRE = "LIVRE";
 
-    public Donations() {
+    public Doacao() {
     }
 
-    public Donations(int quantidadeBolsas, Date data, Doador doador, String pacienteDestino) {
+    public Doacao(int quantidadeBolsas, Date data, Doador doador, String pacienteDestino) {
         this.quantidadeBolsas = quantidadeBolsas;
         this.data = data;
         this.doador = doador;

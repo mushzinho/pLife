@@ -1,7 +1,6 @@
 package mush.com.br.blife.adapter;
 
 import android.content.Context;
-import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,8 +24,6 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
     public DoadoresAdapter(Context ctx, List<Doador> doadores ) {
         this.context = ctx;
         this.doadores = doadores;
-        //doadores.add(new Doador("Outro", "Macho", 19, "2323232"));
-        //Log.d("list", doadores.toString());
     }
 
     @Override
@@ -39,7 +36,6 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
     public void onBindViewHolder(myViewHolder holder, int position) {
         holder.tvNome.setText( doadores.get(position).getNome());
 
-        Log.d("list", "CHAMADOOOO");
     }
 
     @Override

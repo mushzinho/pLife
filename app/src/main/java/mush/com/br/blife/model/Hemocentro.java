@@ -3,16 +3,19 @@ package mush.com.br.blife.model;
 import com.orm.SugarRecord;
 
 
-public class UnidadeDeSaude extends SugarRecord {
+public class Hemocentro extends SugarRecord {
 
     private String nome;
     private String endereço;
+    private String telefone;
 
-    public UnidadeDeSaude() {
+    public Hemocentro() {
     }
-    public UnidadeDeSaude(String nome, String endereço) {
+
+    public Hemocentro(String nome, String endereço, String telefone) {
         this.nome = nome;
         this.endereço = endereço;
+        this.telefone = telefone;
     }
 
     public String getNome() {
@@ -21,5 +24,9 @@ public class UnidadeDeSaude extends SugarRecord {
 
     public String getEndereço() {
         return endereço;
+    }
+
+    public String getTelefone() {
+        return telefone;
     }
 }
