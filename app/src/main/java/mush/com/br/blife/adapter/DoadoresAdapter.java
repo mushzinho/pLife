@@ -39,11 +39,13 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
     private boolean selectionModeOn = false;
     private Set<Integer> selecionados = new HashSet<>();
     private ActionBar mActivityBar;
+    private RecyclerView mDoadorRecyclerView;
 
-    public DoadoresAdapter(Context ctx, List<Doador> doadores ) {
+    public DoadoresAdapter(Context ctx, List<Doador> doadores, RecyclerView myReciclerView ) {
         this.context = ctx;
         this.doadores = doadores;
         mActivityBar = ((MainActivity)context).getSupportActionBar();
+        mDoadorRecyclerView = myReciclerView;
     }
 
     @Override
@@ -73,6 +75,7 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
             public boolean onLongClick(View view) {
 
                 selectionModeOn = true;
+                Log.d("TAG","SELECTION TRUE");
                 holder.cvDoadorLinha.setBackgroundColor(Color.GRAY);
 
                 if(!selecionados.contains(adapterPosition)){
@@ -87,6 +90,7 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
                 ((MainActivity) context).startActionMode(new ActionMode.Callback() {
                     @Override
                     public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+                        selectionModeOn = true;
                         actionMode.getMenuInflater().inflate(R.menu.deletar_doador, menu);
                         return true;
                     }
@@ -100,16 +104,20 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
                     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
                         switch (menuItem.getItemId()){
                             case R.id.menu_doador_deletar:
+                                ArrayList<Doador> doadoresTemp = new ArrayList<>();
                                 for (int id : selecionados) {
-                                    Log.d("LOGA", ""+id);
-                                    //doadores.get(id).delete();
-                                    //doadores.remove( id   );
-                                    //notifyItemRemoved(id);
-
+                                    doadoresTemp.add( doadores.get(id) );
                                 }
-                                //((DoadorFragment)((MainActivity) context).getmSelectedFrament() ).getmDoadoresRecyclerView().setAdapter(DoadoresAdapter.this);
-                               // notifyDataSetChanged();
+                                for (Doador doador : doadoresTemp){
+                                    doadores.remove(doador);
+                                    doador.delete();
+                                }
+                                doadoresTemp.clear();
+                                selecionados.clear();
+                                notifyDataSetChanged();
+
                                 Toast.makeText(context, "Deletados com sucesso", Toast.LENGTH_SHORT).show();
+                                if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
                                 return true;
                             default:
                                 return false;
@@ -122,7 +130,7 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
                         actionMode = null;
                         selectionModeOn = false;
                         mActivityBar.setTitle( context.getString(R.string.donator_menu_name) );
-                        ((DoadorFragment)((MainActivity) context).getmSelectedFrament() ).getmDoadoresRecyclerView().setAdapter(DoadoresAdapter.this);
+                        mDoadorRecyclerView.setAdapter(DoadoresAdapter.this);
                         selecionados.clear();
 
                     }

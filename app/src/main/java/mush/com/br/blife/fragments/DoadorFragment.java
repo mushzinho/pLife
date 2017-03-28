@@ -72,7 +72,7 @@ public class DoadorFragment extends Fragment {
         super.onResume();
 
         List<Doador> doadores = Doador.listAll(Doador.class);
-        mDoadoresAdapter = new DoadoresAdapter(getActivity(), doadores);
+        mDoadoresAdapter = new DoadoresAdapter(getActivity(), doadores, mDoadoresRecyclerView);
         mDoadoresRecyclerView.setAdapter(mDoadoresAdapter);
         mDoadoresRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mDoadoresRecyclerView.setHasFixedSize(true);
@@ -87,7 +87,4 @@ public class DoadorFragment extends Fragment {
 
     }
 
-    public RecyclerView getmDoadoresRecyclerView() {
-        return mDoadoresRecyclerView;
-    }
 }

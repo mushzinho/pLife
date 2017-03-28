@@ -42,4 +42,11 @@ public class Doador extends SugarRecord {
     public String getTipoDeSangue() {
         return tipoDeSangue;
     }
+
+    @Override
+    public String toString() {
+        return "Doador{" +
+                "nome='" + nome + '\'' +
+                '}';
+    }
 }
