@@ -9,16 +9,18 @@ public class Doador extends SugarRecord {
     private String nome;
     private String sexo;
     private int idade;
+    private String tipoDeSangue;
     private String contato;
 
     public Doador() {
     }
 
-    public Doador(String nome, String sexo, int idade, String contato) {
+    public Doador(String nome, String sexo, int idade,String tipoDeSangue, String contato) {
         this.nome = nome;
         this.sexo = sexo;
         this.idade = idade;
         this.contato = contato;
+        this.tipoDeSangue = tipoDeSangue;
     }
 
     public String getNome() {
@@ -37,4 +39,7 @@ public class Doador extends SugarRecord {
         return contato;
     }
 
+    public String getTipoDeSangue() {
+        return tipoDeSangue;
+    }
 }

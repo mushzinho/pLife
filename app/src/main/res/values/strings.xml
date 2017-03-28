@@ -8,16 +8,31 @@
     <string name="rankings_menu_name">Rankings</string>
     <string name="doador_add_doador">Adicionar Doador</string>
 
+
+
+    <string name="adicionar_doador_titulo">Adicionar Doador</string>
+    <string name="add_doador_nome_hint">Nome</string>
+    <string name="add_doador_idade_hint">Idade</string>
+    <string name="add_doador_label_for_sexo">Sexo: </string>
+    <string name="add_doador_label_for_sangue">Tipo de Sangue: </string>
+    <string name="add_doador_telefone">Telefone</string>
+    <string name="add_doador_menu_salvar">Salvar</string>
+    <string name="iv_doadores_content_description">Sexo</string>
+    <string name="add_doador_menu_deletar">Deletar</string>
+
     <string-array name="sexos">
         <item>Masculino</item>
         <item>Feminino</item>
     </string-array>
 
-    <string name="adicionar_doador_titulo">Adicionar Doador</string>
-    <string name="add_doador_nome_hint">Nome</string>
-    <string name="add_doador_idade_hint">Idade</string>
-    <string name="add_doador_label_for_spinner">Sexo:</string>
-    <string name="telefone">Telefone</string>
-    <string name="add_doador_menu_salvar">Salvar</string>
-
+    <string-array name="tipos_sangue">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
 </resources>

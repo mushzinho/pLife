@@ -20,6 +20,7 @@ public class AdicionarDoadorActivity extends AppCompatActivity {
     private EditText etIdade;
     private Spinner spSexos;
     private EditText etTelefone;
+    private Spinner spTiposSangue;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class AdicionarDoadorActivity extends AppCompatActivity {
         etIdade = (EditText) findViewById(R.id.et_add_doador_idade);
         spSexos = (Spinner) findViewById(R.id.sp_sexos);
         etTelefone = (EditText) findViewById(R.id.et_add_doador_contato);
+        spTiposSangue = (Spinner) findViewById(R.id.sp_tipo_sangue);
     }
 
     @Override
@@ -53,13 +55,14 @@ public class AdicionarDoadorActivity extends AppCompatActivity {
                 String nome = etNome.getText().toString();
                 String idadeString = etIdade.getText().toString();
                 String sexo = spSexos.getSelectedItem().toString();
+                String tipoSangue = spTiposSangue.getSelectedItem().toString();
                 String telefone = etTelefone.getText().toString();
 
                 if(nome.equals("") || idadeString.equals("") || telefone.equals("")){
                     Toast.makeText(this, "Todas as informações são obrigatórias", Toast.LENGTH_LONG).show();
                 }else{
                     int idade = Integer.parseInt(idadeString);
-                    Doador doador = new Doador(nome, sexo, idade , telefone);
+                    Doador doador = new Doador(nome, sexo, idade , tipoSangue, telefone);
                     long what = doador.save();
                     Toast.makeText(this, "Doador Salvo" + what, Toast.LENGTH_LONG).show();
                     finish();

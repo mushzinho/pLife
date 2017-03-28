@@ -7,7 +7,10 @@ import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ResideMenuItem mCampanhas;
     private ResideMenuItem mRankings;
     private Fragment mSelectedFrament;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
 
+
         //getSupportActionBar can return null
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mResideMenu = new ResideMenu(this);
         mResideMenu.attachToActivity(this);
         mResideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_LEFT);
-        mResideMenu.setBackground(R.color.colorPrimaryDark);
+        mResideMenu.setBackground(R.color.menuColor);
 
         mHomeItem = new ResideMenuItem(this, R.drawable.ic_home_black_48dp, R.string.home_menu_name);
         mDoadorItem = new ResideMenuItem(this,R.drawable.ic_tag_faces_black_48dp, R.string.donator_menu_name);
@@ -99,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case android.R.id.home:
                 mResideMenu.openMenu(ResideMenu.DIRECTION_RIGHT);
                 break;
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -147,10 +151,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .commit();
     }
 
-    public ResideMenu getResideMenu(){
-        return mResideMenu;
-    }
-
     @Override
     public void onBackPressed() {
         if(mSelectedFrament instanceof DoadorFragment){
@@ -165,5 +165,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.onBackPressed();
         }
 
+    }
+
+    public ResideMenu getResideMenu(){
+        return mResideMenu;
+    }
+
+    public Fragment getmSelectedFrament() {
+        return mSelectedFrament;
     }
 }

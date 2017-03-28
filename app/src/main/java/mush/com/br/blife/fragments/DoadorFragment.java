@@ -5,9 +5,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -19,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mush.com.br.blife.AdicionarDoadorActivity;
+import mush.com.br.blife.MainActivity;
 import mush.com.br.blife.R;
 import mush.com.br.blife.adapter.DoadoresAdapter;
 import mush.com.br.blife.custom.Fab;
@@ -29,6 +33,7 @@ public class DoadorFragment extends Fragment {
 
     private MaterialSheetFab mMaterialSheetFab;
     private RecyclerView mDoadoresRecyclerView;
+    private RecyclerView.Adapter mDoadoresAdapter;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,8 @@ public class DoadorFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.donator_menu_name));
 
         Fab fab = (Fab) getActivity().findViewById(R.id.fab_doador);
         View sheetView = getActivity().findViewById(R.id.fab_sheet);
@@ -65,9 +72,10 @@ public class DoadorFragment extends Fragment {
         super.onResume();
 
         List<Doador> doadores = Doador.listAll(Doador.class);
-        RecyclerView.Adapter mDoadoresAdapter = new DoadoresAdapter(getActivity(), doadores);
+        mDoadoresAdapter = new DoadoresAdapter(getActivity(), doadores);
         mDoadoresRecyclerView.setAdapter(mDoadoresAdapter);
         mDoadoresRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mDoadoresRecyclerView.setHasFixedSize(true);
 
     }
 
@@ -79,6 +87,7 @@ public class DoadorFragment extends Fragment {
 
     }
 
-
-
+    public RecyclerView getmDoadoresRecyclerView() {
+        return mDoadoresRecyclerView;
+    }
 }

@@ -39,28 +39,41 @@
             android:id="@+id/et_add_doador_idade"
             android:hint="@string/add_doador_idade_hint" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:labelFor="@+id/sp_sexos"
-            android:layout_marginStart="6dp"
-            android:layout_marginLeft="6dp"
-            android:text="@string/add_doador_label_for_spinner"/>
-        <Spinner
-            android:id="@+id/sp_sexos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/sexos">
-
-        </Spinner>
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:ems="10"
             android:id="@+id/et_add_doador_contato"
-            android:hint="@string/telefone"/>
+            android:hint="@string/add_doador_telefone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/sp_sexos"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:text="@string/add_doador_label_for_sexo"/>
+
+        <Spinner
+            android:id="@+id/sp_sexos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/sexos" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/sp_sexos"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:text="@string/add_doador_label_for_sangue"/>
+
+        <Spinner
+            android:id="@+id/sp_tipo_sangue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/tipos_sangue" />
 
 
     </LinearLayout>
