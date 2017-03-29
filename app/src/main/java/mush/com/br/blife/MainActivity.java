@@ -7,10 +7,7 @@ import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,7 +21,7 @@ import com.special.ResideMenu.ResideMenuItem;
 
 import mush.com.br.blife.fragments.CampanhasFragment;
 import mush.com.br.blife.fragments.DoadorFragment;
-import mush.com.br.blife.fragments.DonationsFragment;
+import mush.com.br.blife.fragments.DoacaoFragment;
 import mush.com.br.blife.fragments.HomeFragment;
 import mush.com.br.blife.fragments.SaidasFragment;
 
@@ -111,30 +108,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == mHomeItem){
-            if(!(mSelectedFrament instanceof HomeFragment)) {
+
                 mSelectedFrament = new HomeFragment();
                 changeFragment(mSelectedFrament);
-            }
+
 
         }else if(view == mDoadorItem) {
-            if(!(mSelectedFrament instanceof DoadorFragment)){
+
                 mSelectedFrament = new DoadorFragment();
                 changeFragment(mSelectedFrament);
-            }
+
 
         }else if(view == mDonation){
-            if(!(mSelectedFrament instanceof DonationsFragment)) {
-                changeFragment(new DonationsFragment());
-            }
+
+                changeFragment(new DoacaoFragment());
+
         }else if(view == mSaidas){
-            if(!(mSelectedFrament instanceof SaidasFragment)) {
+
                 changeFragment(new SaidasFragment());
-            }
+
 
         }else if(view == mCampanhas){
-            if(!(mSelectedFrament instanceof CampanhasFragment)) {
+
                 changeFragment(new CampanhasFragment());
-            }
+
 
         }else if(view == mRankings){
             //todo

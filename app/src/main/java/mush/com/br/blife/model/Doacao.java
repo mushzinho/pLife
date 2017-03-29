@@ -39,4 +39,14 @@ public class Doacao extends SugarRecord {
     public String getPacienteDestino() {
         return pacienteDestino;
     }
+
+    @Override
+    public String toString() {
+        return "Doacao{" +
+                "quantidadeBolsas=" + quantidadeBolsas +
+                ", data=" + data +
+                ", doador=" + doador +
+                ", pacienteDestino='" + pacienteDestino + '\'' +
+                '}';
+    }
 }
