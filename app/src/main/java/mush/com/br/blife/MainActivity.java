@@ -111,20 +111,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == mHomeItem){
-            mSelectedFrament = new HomeFragment();
-            changeFragment(mSelectedFrament);
+            if(!(mSelectedFrament instanceof HomeFragment)) {
+                mSelectedFrament = new HomeFragment();
+                changeFragment(mSelectedFrament);
+            }
 
         }else if(view == mDoadorItem) {
-            mSelectedFrament = new DoadorFragment();
-            changeFragment(mSelectedFrament);
+            if(!(mSelectedFrament instanceof DoadorFragment)){
+                mSelectedFrament = new DoadorFragment();
+                changeFragment(mSelectedFrament);
+            }
 
         }else if(view == mDonation){
-            changeFragment(new DonationsFragment());
+            if(!(mSelectedFrament instanceof DonationsFragment)) {
+                changeFragment(new DonationsFragment());
+            }
         }else if(view == mSaidas){
-            changeFragment(new SaidasFragment());
+            if(!(mSelectedFrament instanceof SaidasFragment)) {
+                changeFragment(new SaidasFragment());
+            }
 
         }else if(view == mCampanhas){
-            changeFragment(new CampanhasFragment());
+            if(!(mSelectedFrament instanceof CampanhasFragment)) {
+                changeFragment(new CampanhasFragment());
+            }
 
         }else if(view == mRankings){
             //todo

@@ -1,9 +1,12 @@
 package mush.com.br.blife.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -75,7 +78,6 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
             public boolean onLongClick(View view) {
 
                 selectionModeOn = true;
-                Log.d("TAG","SELECTION TRUE");
                 holder.cvDoadorLinha.setBackgroundColor(Color.GRAY);
 
                 if(!selecionados.contains(adapterPosition)){
@@ -104,20 +106,37 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
                     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
                         switch (menuItem.getItemId()){
                             case R.id.menu_doador_deletar:
-                                ArrayList<Doador> doadoresTemp = new ArrayList<>();
-                                for (int id : selecionados) {
-                                    doadoresTemp.add( doadores.get(id) );
-                                }
-                                for (Doador doador : doadoresTemp){
-                                    doadores.remove(doador);
-                                    doador.delete();
-                                }
-                                doadoresTemp.clear();
-                                selecionados.clear();
-                                notifyDataSetChanged();
 
-                                Toast.makeText(context, "Deletados com sucesso", Toast.LENGTH_SHORT).show();
-                                if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
+                                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                                builder.setTitle("Confirma deleção?")
+                                        .setMessage("Os itens serão deletados permanentementes.")
+                                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                ArrayList<Doador> doadoresTemp = new ArrayList<>();
+                                                for (int id : selecionados) {
+                                                    doadoresTemp.add( doadores.get(id) );
+                                                }
+                                                for (Doador doador : doadoresTemp){
+                                                    doadores.remove(doador);
+                                                    doador.delete();
+                                                }
+                                                doadoresTemp.clear();
+                                                selecionados.clear();
+                                                notifyDataSetChanged();
+
+                                                Toast.makeText(context, "Deletado(s) com sucesso", Toast.LENGTH_SHORT).show();
+                                                dialogInterface.dismiss();
+                                                if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
+                                            }
+                                        }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                    }
+                                }).create().show();
+
                                 return true;
                             default:
                                 return false;
