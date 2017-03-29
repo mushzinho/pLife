@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ResideMenuItem mRankings;
     private Fragment mSelectedFrament;
 
+    //TODO  RESULVER BUG DOS FRAGMENTS EMPILHAREM
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));

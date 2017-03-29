@@ -5,12 +5,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -18,7 +15,6 @@ import android.widget.TextView;
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import mush.com.br.blife.AdicionarDoadorActivity;
