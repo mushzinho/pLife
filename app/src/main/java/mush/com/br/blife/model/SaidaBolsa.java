@@ -10,7 +10,7 @@ public class SaidaBolsa extends SugarRecord {
     private String hospital;
     private Date data;
     private int quantidadeSaindo;
-
+    //TODO adicionar o tipo de saida
     public SaidaBolsa(){
     }
     public SaidaBolsa(String hospital, Date data, int quantidadeSaindo) {

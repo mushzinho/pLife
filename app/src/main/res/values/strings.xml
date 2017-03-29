@@ -9,7 +9,6 @@
     <string name="doador_add_doador">Adicionar Doador</string>
 
 
-
     <string name="adicionar_doador_titulo">Adicionar Doador</string>
     <string name="add_doador_nome_hint">Nome</string>
     <string name="add_doador_idade_hint">Idade</string>
@@ -19,6 +18,9 @@
     <string name="add_doador_menu_salvar">Salvar</string>
     <string name="iv_doadores_content_description">Sexo</string>
     <string name="add_doador_menu_deletar">Deletar</string>
+    <string name="adicionar_doacao_titulo">Adicionar Doação</string>
+    <string name="actv_selecionar_doador_hint">Doador</string>
+    <string name="et_quantidade_bolsas_hint">Quantidade de Bolsas</string>
 
     <string-array name="sexos">
         <item>Masculino</item>

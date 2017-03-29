@@ -5,7 +5,7 @@ import com.orm.SugarRecord;
 import java.util.Date;
 
 
-public class Campanhas extends SugarRecord {
+public class Campanha extends SugarRecord {
 
     private String nome;
     private String tipoSangue;
@@ -13,10 +13,10 @@ public class Campanhas extends SugarRecord {
     private Date fim;
     private String DescricaoDaCapanha;
 
-    public Campanhas(){
+    public Campanha(){
     }
 
-    public Campanhas(String nome, String tipoSangue, Date inicio, Date fim, String descricaoDaCapanha) {
+    public Campanha(String nome, String tipoSangue, Date inicio, Date fim, String descricaoDaCapanha) {
         this.nome = nome;
         this.tipoSangue = tipoSangue;
         this.inicio = inicio;
@@ -44,4 +44,8 @@ public class Campanhas extends SugarRecord {
         return DescricaoDaCapanha;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
 }

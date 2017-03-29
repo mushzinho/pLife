@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_adicionar_doacao"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="mush.com.br.blife.AdicionarDoacaoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/add_doacao_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:titleTextColor="@color/colorAccent"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_selecionar_doador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/actv_selecionar_doador_hint"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="@string/et_quantidade_bolsas_hint"
+            android:id="@+id/et_quantidade_bolsas"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/rg_tipo_campanha"
+            android:text="Destino da doação"
+            android:textAlignment="center"/>
+
+       <RadioGroup
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:id="@+id/rg_tipo_campanha"
+           android:orientation="horizontal">
+
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Pessoa" />
+
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Campanha"/>
+
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Livre"/>
+       </RadioGroup>
+
+        <!-- Doar para pessoa -->
+        <LinearLayout
+            android:id="@+id/doar_para_pessoa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/et_pessoa_destino"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome do receptor"/>
+
+        </LinearLayout>
+
+        <!-- Doar para Campanha -->
+        <LinearLayout
+            android:id="@+id/doar_para_campanha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <AutoCompleteTextView
+                android:id="@+id/actv_selecionar_campanha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome da Campanha"/>
+
+        </LinearLayout>
+
+    </LinearLayout><!-- WRAPER-->
+
+
+
+</LinearLayout>
+
