@@ -29,7 +29,7 @@ public class CampanhasFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mRvListarCampanhas = (RecyclerView) getActivity().findViewById(R.id.rv_Listar_campanhas);
+        mRvListarCampanhas = (RecyclerView) getActivity().findViewById(R.id.rv_listar_campanhas);
 
     }
 

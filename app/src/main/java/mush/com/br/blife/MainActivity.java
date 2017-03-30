@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -42,7 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTION_MODE_OVERLAY);
         setContentView(R.layout.activity_main);
+
+
 
         if(savedInstanceState == null){
             mSelectedFrament = new HomeFragment();
