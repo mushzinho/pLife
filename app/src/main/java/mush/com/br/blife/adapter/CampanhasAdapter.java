@@ -27,28 +27,29 @@ import java.util.Set;
 
 import mush.com.br.blife.MainActivity;
 import mush.com.br.blife.R;
+import mush.com.br.blife.model.Campanha;
 import mush.com.br.blife.model.Doacao;
 
 
-public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHolder> {
+public class CampanhasAdapter extends RecyclerView.Adapter<CampanhasAdapter.myViewHolder> {
 
     private Context context;
-    private List<Doacao> doacoes;
+    private List<Campanha> campanhas;
     private boolean selectionModeOn = false;
     private Set<Integer> selecionadas = new HashSet<>();
     private ActionBar mActivityBar;
     private RecyclerView mDoacoesRecyclerView;
 
-    public DoacoesAdapter(Context ctx, List<Doacao> doacoes, RecyclerView myReciclerView ) {
+    public CampanhasAdapter(Context ctx, List<Campanha> campanhas, RecyclerView myReciclerView ) {
         this.context = ctx;
-        this.doacoes = doacoes;
+        this.campanhas = campanhas;
         mActivityBar = ((MainActivity)context).getSupportActionBar();
         mDoacoesRecyclerView = myReciclerView;
     }
 
     @Override
     public myViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       View myView =  LayoutInflater.from(context).inflate(R.layout.doacoes_linha, parent, false);
+       View myView =  LayoutInflater.from(context).inflate(R.layout.campanhas_linha, parent, false);
         return new myViewHolder(myView);
     }
 
@@ -57,28 +58,28 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
 
 
 
-        holder.ivDoacaoImage.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_ambulance).color(Color.BLUE).sizeDp(50));
+        holder.ivCampanhaImage.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_caret_square_o_up).color(Color.BLUE).sizeDp(50));
 
-        holder.tvDoacaoDoadorNome.setText("Doador : " + doacoes.get(position).getDoador().getNome() );
-        holder.tvPacienteDestino.setText("Destino: " +  doacoes.get(position).getPacienteDestino() );
-        holder.tvNomeCampanha.setText("Campanha : " + doacoes.get(position).getCampanhaDestino() );
-        holder.tvDataDoacao.setText( doacoes.get(position).getData().toString() );
+        holder.tvCampanhaNome.setText("Campanha : " + campanhas.get(position).getNome() );
+        holder.tvCampanhaTipoSangue.setText("Tipo de Sangue: " +  campanhas.get(position).getTipoSangue() );
+        holder.tvCampanhaDataFinal.setText("Data Final : " + campanhas.get(position).getFim().toString() );
+        holder.tvDescricaoCampanha.setText( "Descrição: " +  campanhas.get(position).getDescricaoDaCapanha());
 
         final int adapterPosition = holder.getAdapterPosition();
 
-        holder.cvDoacaoLinha.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.cvCampanhaLinha.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
 
                 selectionModeOn = true;
-                holder.cvDoacaoLinha.setBackgroundColor(Color.GRAY);
+                holder.cvCampanhaLinha.setBackgroundColor(Color.GRAY);
 
                 if(!selecionadas.contains(adapterPosition)){
                     selecionadas.add(adapterPosition);
 
                 }else{
                     selecionadas.remove(adapterPosition);
-                    holder.cvDoacaoLinha.setBackgroundColor(Color.WHITE);
+                    holder.cvCampanhaLinha.setBackgroundColor(Color.WHITE);
                 }
                 if(mActivityBar != null ) mActivityBar.setTitle(selecionadas.size() + " Selecionado(s)");
 
@@ -107,12 +108,12 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                ArrayList<Doacao> doacaoTemp = new ArrayList<>();
+                                                ArrayList<Campanha> doacaoTemp = new ArrayList<>();
                                                 for (int id : selecionadas) {
-                                                    doacaoTemp.add( doacoes.get(id) );
+                                                    doacaoTemp.add( campanhas.get(id) );
                                                 }
-                                                for (Doacao doacao : doacaoTemp){
-                                                    doacoes.remove(doacao);
+                                                for (Campanha doacao : doacaoTemp){
+                                                    campanhas.remove(doacao);
                                                     doacao.delete();
                                                 }
                                                 doacaoTemp.clear();
@@ -142,7 +143,7 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
                         actionMode = null;
                         selectionModeOn = false;
                         mActivityBar.setTitle( context.getString(R.string.donator_menu_name) );
-                        mDoacoesRecyclerView.setAdapter(DoacoesAdapter.this);
+                        mDoacoesRecyclerView.setAdapter(CampanhasAdapter.this);
                         selecionadas.clear();
 
                     }
@@ -152,19 +153,19 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
             }
         });
 
-        holder.cvDoacaoLinha.setOnClickListener(new View.OnClickListener() {
+        holder.cvCampanhaLinha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(selectionModeOn){
 
 
-                    holder.cvDoacaoLinha.setBackgroundColor(Color.GRAY);
+                    holder.cvCampanhaLinha.setBackgroundColor(Color.GRAY);
 
                     if(!selecionadas.contains(adapterPosition)){
                         selecionadas.add(adapterPosition);
                     }else{
                         selecionadas.remove(adapterPosition);
-                        holder.cvDoacaoLinha.setBackgroundColor(Color.WHITE);
+                        holder.cvCampanhaLinha.setBackgroundColor(Color.WHITE);
                     }
 
                     if(mActivityBar != null ) mActivityBar.setTitle(selecionadas.size() + " Selecionado(s)");
@@ -178,26 +179,28 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
 
     @Override
     public int getItemCount() {
-        return doacoes.size();
+        return campanhas.size();
     }
 
     class myViewHolder extends  RecyclerView.ViewHolder{
 
-        private TextView tvDoacaoDoadorNome;
-        private TextView tvPacienteDestino;
-        private TextView tvNomeCampanha;
-        private TextView tvDataDoacao;
-        private ImageView ivDoacaoImage;
-        private CardView cvDoacaoLinha;
+        private TextView tvCampanhaNome;
+        private TextView tvCampanhaTipoSangue;
+        private TextView tvCampanhaDataFinal;
+        private TextView tvDescricaoCampanha;
+
+        private ImageView ivCampanhaImage;
+        private CardView cvCampanhaLinha;
 
         myViewHolder(View itemView) {
             super(itemView);
-            tvDoacaoDoadorNome = (TextView) itemView.findViewById(R.id.tv_doacao_doador_nome);
-            tvPacienteDestino = (TextView) itemView.findViewById(R.id.tv_doacao_paciente_destino);
-            tvNomeCampanha = (TextView) itemView.findViewById(R.id.tv_nome_campanha);
-            tvDataDoacao = (TextView) itemView.findViewById(R.id.tv_data_doacao);
-            ivDoacaoImage = (ImageView) itemView.findViewById(R.id.iv_doacao_linha);
-            cvDoacaoLinha = (CardView) itemView.findViewById(R.id.cv_doacao_linha);
+            tvCampanhaNome = (TextView) itemView.findViewById(R.id.tv_campanha_nome);
+            tvCampanhaTipoSangue = (TextView) itemView.findViewById(R.id.tv_campanha_tipo_sangue);
+            tvCampanhaDataFinal = (TextView) itemView.findViewById(R.id.tv_campanha_data_final);
+            tvDescricaoCampanha = (TextView) itemView.findViewById(R.id.tv_campanha_descricao);
+
+            ivCampanhaImage = (ImageView) itemView.findViewById(R.id.iv_campanha_imagem);
+            cvCampanhaLinha = (CardView) itemView.findViewById(R.id.cv_campanha_linha);
 
         }
     }
