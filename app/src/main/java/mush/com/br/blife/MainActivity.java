@@ -23,6 +23,7 @@ import mush.com.br.blife.fragments.CampanhasFragment;
 import mush.com.br.blife.fragments.DoadorFragment;
 import mush.com.br.blife.fragments.DoacaoFragment;
 import mush.com.br.blife.fragments.HomeFragment;
+import mush.com.br.blife.fragments.RankingFragment;
 import mush.com.br.blife.fragments.SaidasFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -40,8 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -111,32 +110,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view == mHomeItem){
 
-                mSelectedFrament = new HomeFragment();
-                changeFragment(mSelectedFrament);
+            mSelectedFrament = new HomeFragment();
+            changeFragment(mSelectedFrament);
 
 
         }else if(view == mDoadorItem) {
 
-                mSelectedFrament = new DoadorFragment();
-                changeFragment(mSelectedFrament);
+            mSelectedFrament = new DoadorFragment();
+            changeFragment(mSelectedFrament);
 
 
         }else if(view == mDonation){
 
-                changeFragment(new DoacaoFragment());
+            changeFragment(new DoacaoFragment());
 
         }else if(view == mSaidas){
 
-                changeFragment(new SaidasFragment());
+            changeFragment(new SaidasFragment());
 
 
         }else if(view == mCampanhas){
 
-                changeFragment(new CampanhasFragment());
+            changeFragment(new CampanhasFragment());
 
 
         }else if(view == mRankings){
-            //todo
+
+            changeFragment(new RankingFragment());
         }
         mResideMenu.closeMenu();
     }
