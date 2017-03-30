@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -94,7 +95,8 @@ public class AdicionarSaidaActivity extends AppCompatActivity {
                     Toast.makeText(this, "Hospital ou Quantidades em branco !", Toast.LENGTH_LONG).show();
 
                 }else{
-                    new SaidaBolsa(hopitalDestino, new Date(),bolsasPorTipo ).save();
+                    Log.d("DEBUG", "AQUI TA INDO" + bolsasPorTipo.getaPos() );
+                    new SaidaBolsa(hopitalDestino, new Date(), bolsasPorTipo ).save();
 
                     Toast.makeText(this, "Saida Cadastrada !", Toast.LENGTH_LONG).show();
                 }

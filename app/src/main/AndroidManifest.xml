@@ -14,12 +14,18 @@
             android:value="SUGAR_BLIFE_DB" />
         <meta-data
             android:name="VERSION"
-            android:value="14" />
+            android:value="15" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
 
         <activity android:name=".MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
 
         </activity>
         <activity
@@ -35,11 +41,9 @@
         </activity>
 
         <activity android:name=".AdicionarSaidaActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+
         </activity>
     </application>
 

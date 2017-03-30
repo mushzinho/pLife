@@ -45,6 +45,7 @@ public class DoacaoFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         List<Doacao> doacoes = Doacao.listAll(Doacao.class);
         DoacoesAdapter doacoesAdapter = new DoacoesAdapter(getActivity(), doacoes, mRvDoacoes );
         mRvDoacoes.setAdapter(doacoesAdapter);

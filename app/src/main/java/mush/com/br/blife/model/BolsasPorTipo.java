@@ -79,4 +79,11 @@ public class BolsasPorTipo extends SugarRecord {
     public int getoNeg() {
         return oNeg;
     }
+
+    @Override
+    public String toString() {
+        return "BolsasPorTipo{" +
+                "aPos=" + aPos +
+                '}';
+    }
 }
