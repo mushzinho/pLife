@@ -9,14 +9,15 @@ public class SaidaBolsa extends SugarRecord {
 
     private String hospital;
     private Date data;
-    private int quantidadeSaindo;
-    //TODO adicionar o tipo de saida
+    private BolsasPorTipo bolsasPorTipo;
+
     public SaidaBolsa(){
     }
-    public SaidaBolsa(String hospital, Date data, int quantidadeSaindo) {
+
+    public SaidaBolsa(String hospital, Date data, BolsasPorTipo bolsasPorTipo) {
         this.hospital = hospital;
         this.data = data;
-        this.quantidadeSaindo = quantidadeSaindo;
+        this.bolsasPorTipo = bolsasPorTipo;
     }
 
     public String getHospital() {
@@ -27,7 +28,7 @@ public class SaidaBolsa extends SugarRecord {
         return data;
     }
 
-    public int getQuantidadeSaindo() {
-        return quantidadeSaindo;
+    public BolsasPorTipo getBolsasPorTipo() {
+        return bolsasPorTipo;
     }
 }
