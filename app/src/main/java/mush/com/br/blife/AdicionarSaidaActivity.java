@@ -95,7 +95,8 @@ public class AdicionarSaidaActivity extends AppCompatActivity {
                     Toast.makeText(this, "Hospital ou Quantidades em branco !", Toast.LENGTH_LONG).show();
 
                 }else{
-                    Log.d("DEBUG", "AQUI TA INDO" + bolsasPorTipo.getaPos() );
+                  //  Log.d("DEBUG", "AQUI TA INDO" + bolsasPorTipo.getaPos() );
+                    bolsasPorTipo.save();
                     new SaidaBolsa(hopitalDestino, new Date(), bolsasPorTipo ).save();
 
                     Toast.makeText(this, "Saida Cadastrada !", Toast.LENGTH_LONG).show();
