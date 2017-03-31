@@ -101,11 +101,15 @@ public class AdicionarSaidaActivity extends AppCompatActivity {
 
                     Toast.makeText(this, "Saida Cadastrada !", Toast.LENGTH_LONG).show();
                 }
+                return true;
 
+            case android.R.id.home:
+                onBackPressed();
+                return true;
 
-
-                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+
     }
 }
