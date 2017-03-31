@@ -1,5 +1,6 @@
 package mush.com.br.blife;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,7 +48,10 @@ public class AdicionarDoacaoActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-       // new Doador("Pablo", "Masculino",10,"A+","9999999" ).save();
+        Intent intent = getIntent();
+        intent.getIntExtra("UserId", 0);
+
+                // new Doador("Pablo", "Masculino",10,"A+","9999999" ).save();
        // new Campanha("Campanha", "A+", new Date(), new Date(), "Campanha Legal" ).save();
 
         mSelecionarDoador = (AutoCompleteTextView) findViewById(R.id.actv_selecionar_doador);

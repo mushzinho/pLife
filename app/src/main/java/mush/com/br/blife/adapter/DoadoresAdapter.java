@@ -73,14 +73,14 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
             public boolean onLongClick(View view) {
 
                 selectionModeOn = true;
-                holder.cvDoadorLinha.setBackgroundColor(Color.GRAY);
+                holder.cvDoadorLinha.setBackgroundColor(Color.BLACK);
 
                 if(!selecionados.contains(adapterPosition)){
                     selecionados.add(adapterPosition);
 
                 }else{
                     selecionados.remove(adapterPosition);
-                    holder.cvDoadorLinha.setBackgroundColor(Color.WHITE);
+                    holder.cvDoadorLinha.setBackgroundColor(Color.DKGRAY);
                 }
                 if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
 
@@ -160,13 +160,13 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
                 if(selectionModeOn){
 
 
-                    holder.cvDoadorLinha.setBackgroundColor(Color.GRAY);
+                    holder.cvDoadorLinha.setBackgroundColor(Color.BLACK);
 
                     if(!selecionados.contains(adapterPosition)){
                         selecionados.add(adapterPosition);
                     }else{
                         selecionados.remove(adapterPosition);
-                        holder.cvDoadorLinha.setBackgroundColor(Color.WHITE);
+                        holder.cvDoadorLinha.setBackgroundColor(Color.DKGRAY);
                     }
 
                     if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
