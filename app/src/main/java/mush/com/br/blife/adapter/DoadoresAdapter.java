@@ -2,11 +2,13 @@ package mush.com.br.blife.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,6 +27,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import mush.com.br.blife.AdicionarDoacaoActivity;
+import mush.com.br.blife.AdicionarDoadorActivity;
 import mush.com.br.blife.MainActivity;
 import mush.com.br.blife.R;
 import mush.com.br.blife.model.Doador;
@@ -53,7 +57,7 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
     }
 
     @Override
-    public void onBindViewHolder(final myViewHolder holder, int position) {
+    public void onBindViewHolder(final myViewHolder holder, final int position) {
 
         String sexo = doadores.get(position).getSexo();
         if(sexo.equals("Masculino")){
@@ -67,6 +71,7 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
         holder.tvContato.setText(context.getString(R.string.add_doador_telefone) + ": " + doadores.get(position).getContato());
         holder.tvTipoSangue.setText(doadores.get(position).getTipoDeSangue());
         final int adapterPosition = holder.getAdapterPosition();
+
 
         holder.cvDoadorLinha.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -171,6 +176,11 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
 
                     if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
 
+                }else{
+                    Intent intent = new Intent(context, AdicionarDoacaoActivity.class);
+                    intent.putExtra("UserId", adapterPosition );
+                    //Log.d("PAPA", "AP:" + adapterPosition + "POS:" + position);
+                    context.startActivity(intent);
                 }
             }
         });

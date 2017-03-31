@@ -48,10 +48,9 @@ public class AdicionarDoacaoActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        Intent intent = getIntent();
-        intent.getIntExtra("UserId", 0);
 
-                // new Doador("Pablo", "Masculino",10,"A+","9999999" ).save();
+
+        //new Doador("Pablo", "Masculino",10,"A+","9999999" ).save();
        // new Campanha("Campanha", "A+", new Date(), new Date(), "Campanha Legal" ).save();
 
         mSelecionarDoador = (AutoCompleteTextView) findViewById(R.id.actv_selecionar_doador);
@@ -60,6 +59,14 @@ public class AdicionarDoacaoActivity extends AppCompatActivity {
         mQuantidadeDeBolsas = (EditText) findViewById(R.id.et_quantidade_bolsas);
         mPessoaDestino = (EditText) findViewById(R.id.et_pessoa_destino);
 
+        Intent intent = getIntent();
+        int userId = intent.getIntExtra("UserId", 0);
+
+        if(userId > 0){
+            doadorSelecionadoObjeto = Doador.findById(Doador.class, userId + 1);
+            mSelecionarDoador.setText(doadorSelecionadoObjeto.getNome());
+            doadorSelecionado = true;
+        }
 
 
 
@@ -154,20 +161,26 @@ public class AdicionarDoacaoActivity extends AppCompatActivity {
 
     public boolean SalvarDocao(){
 
-        int quantidadeDeBolsas =  Integer.parseInt( mQuantidadeDeBolsas.getText().toString() );
-        if(mSelectedDestinoDoacao == 0){
-            String pacienteDestino = mPessoaDestino.getText().toString();
-            long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, pacienteDestino, null).save();
-            if(res > 0) return true;
-        }else  if(mSelectedDestinoDoacao == 1){
-            long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, Doacao.LIVRE, campanhaSelecionadaObjeto).save();
-            if(res > 0) return true;
-        }else {
-            long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, Doacao.CAMPANHA, null).save();
-            if(res > 0) return true;
-        }
+        if(doadorSelecionado) {
 
+            int quantidadeDeBolsas = Integer.parseInt(mQuantidadeDeBolsas.getText().toString());
+            if (mSelectedDestinoDoacao == 0) {
+                String pacienteDestino = mPessoaDestino.getText().toString();
+                long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, pacienteDestino, null).save();
+                if (res > 0) return true;
+            } else if (mSelectedDestinoDoacao == 1) {
+                long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, Doacao.LIVRE, campanhaSelecionadaObjeto).save();
+                if (res > 0) return true;
+            } else {
+                long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, Doacao.CAMPANHA, null).save();
+                if (res > 0) return true;
+            }
+        }else{
+            Toast.makeText(this, "Selecione um doador", Toast.LENGTH_LONG).show();
+
+        }
         return false;
+
     }
 
     @Override

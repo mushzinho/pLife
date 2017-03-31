@@ -44,6 +44,7 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
         this.doacoes = doacoes;
         mActivityBar = ((MainActivity)context).getSupportActionBar();
         mDoacoesRecyclerView = myReciclerView;
+      //  Doacao.deleteAll(Doacao.class);
     }
 
     @Override
