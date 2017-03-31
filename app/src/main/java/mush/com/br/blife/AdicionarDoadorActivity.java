@@ -68,12 +68,16 @@ public class AdicionarDoadorActivity extends AppCompatActivity {
                     finish();
 
                 }
-                break;
+                return true;
+
             case android.R.id.home:
                 onBackPressed();
-                break;
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
 
         }
-        return super.onOptionsItemSelected(item);
+
     }
 }

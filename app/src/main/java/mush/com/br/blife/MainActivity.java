@@ -104,9 +104,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()){
             case android.R.id.home:
                 mResideMenu.openMenu(ResideMenu.DIRECTION_RIGHT);
-                break;
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+
     }
 
     @Override

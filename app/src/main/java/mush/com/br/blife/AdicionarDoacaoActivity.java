@@ -179,7 +179,9 @@ public class AdicionarDoacaoActivity extends AppCompatActivity {
                 if(SalvarDocao() ){
                     Toast.makeText(this, "Doação Realizada", Toast.LENGTH_SHORT).show();
                 }
-
+                return true;
+            case android.R.id.home:
+                onBackPressed();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
