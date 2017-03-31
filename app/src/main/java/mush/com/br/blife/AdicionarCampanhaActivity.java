@@ -62,9 +62,13 @@ public class AdicionarCampanhaActivity extends AppCompatActivity {
                     new Campanha(nomeCampanha, tipoSangueCampanha, new Date(), new Date(), descricaoCampanha).save();
                     Toast.makeText(this, "Campanha Salva", Toast.LENGTH_SHORT).show();
                 }
-
-                break;
+                return true;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+
     }
 }
