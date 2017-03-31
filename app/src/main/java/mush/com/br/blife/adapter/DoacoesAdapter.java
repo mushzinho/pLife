@@ -73,16 +73,15 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
             public boolean onLongClick(View view) {
 
                 selectionModeOn = true;
-                holder.cvDoacaoLinha.setBackgroundColor(Color.GRAY);
+                holder.cvDoacaoLinha.setBackgroundColor(Color.BLACK);
 
                 if(!selecionadas.contains(adapterPosition)){
                     selecionadas.add(adapterPosition);
 
                 }else{
                     selecionadas.remove(adapterPosition);
-                    holder.cvDoacaoLinha.setBackgroundColor(Color.WHITE);
+                    holder.cvDoacaoLinha.setBackgroundColor(Color.DKGRAY);
                 }
-                if(mActivityBar != null ) mActivityBar.setTitle(selecionadas.size() + " Selecionado(s)");
 
                 ((MainActivity) context).startActionMode(new ActionMode.Callback() {
                     @Override
@@ -123,7 +122,6 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
 
                                                 Toast.makeText(context, "Deletado(s) com sucesso", Toast.LENGTH_SHORT).show();
                                                 dialogInterface.dismiss();
-                                                if(mActivityBar != null ) mActivityBar.setTitle(selecionadas.size() + " Selecionado(s)");
                                             }
                                         }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
                                     @Override
@@ -143,7 +141,6 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
                     public void onDestroyActionMode(ActionMode actionMode) {
                         actionMode = null;
                         selectionModeOn = false;
-                        mActivityBar.setTitle( context.getString(R.string.donator_menu_name) );
                         mDoacoesRecyclerView.setAdapter(DoacoesAdapter.this);
                         selecionadas.clear();
 
@@ -160,16 +157,15 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
                 if(selectionModeOn){
 
 
-                    holder.cvDoacaoLinha.setBackgroundColor(Color.GRAY);
+                    holder.cvDoacaoLinha.setBackgroundColor(Color.BLACK);
 
                     if(!selecionadas.contains(adapterPosition)){
                         selecionadas.add(adapterPosition);
                     }else{
                         selecionadas.remove(adapterPosition);
-                        holder.cvDoacaoLinha.setBackgroundColor(Color.WHITE);
+                        holder.cvDoacaoLinha.setBackgroundColor(Color.DKGRAY);
                     }
 
-                    if(mActivityBar != null ) mActivityBar.setTitle(selecionadas.size() + " Selecionado(s)");
 
                 }
             }

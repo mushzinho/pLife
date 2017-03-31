@@ -80,16 +80,15 @@ public class SaidasAdapter extends RecyclerView.Adapter<SaidasAdapter.myViewHold
             public boolean onLongClick(View view) {
 
                 selectionModeOn = true;
-                holder.dvSaidaLinha.setBackgroundColor(Color.GRAY);
+                holder.dvSaidaLinha.setBackgroundColor(Color.BLACK);
 
                 if(!selecionados.contains(adapterPosition)){
                     selecionados.add(adapterPosition);
 
                 }else{
                     selecionados.remove(adapterPosition);
-                    holder.dvSaidaLinha.setBackgroundColor(Color.WHITE);
+                    holder.dvSaidaLinha.setBackgroundColor(Color.DKGRAY);
                 }
-                if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
 
                 ((MainActivity) context).startActionMode(new ActionMode.Callback() {
                     @Override
@@ -130,7 +129,6 @@ public class SaidasAdapter extends RecyclerView.Adapter<SaidasAdapter.myViewHold
 
                                                 Toast.makeText(context, "Deletado(s) com sucesso", Toast.LENGTH_SHORT).show();
                                                 dialogInterface.dismiss();
-                                                if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
                                             }
                                         }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
                                     @Override
@@ -150,7 +148,6 @@ public class SaidasAdapter extends RecyclerView.Adapter<SaidasAdapter.myViewHold
                     public void onDestroyActionMode(ActionMode actionMode) {
                         actionMode = null;
                         selectionModeOn = false;
-                        mActivityBar.setTitle( context.getString(R.string.donator_menu_name) );
                         mSaidaRecyclerView.setAdapter(SaidasAdapter.this);
                         selecionados.clear();
 
@@ -167,16 +164,15 @@ public class SaidasAdapter extends RecyclerView.Adapter<SaidasAdapter.myViewHold
                 if(selectionModeOn){
 
 
-                    holder.dvSaidaLinha.setBackgroundColor(Color.GRAY);
+                    holder.dvSaidaLinha.setBackgroundColor(Color.BLACK);
 
                     if(!selecionados.contains(adapterPosition)){
                         selecionados.add(adapterPosition);
                     }else{
                         selecionados.remove(adapterPosition);
-                        holder.dvSaidaLinha.setBackgroundColor(Color.WHITE);
+                        holder.dvSaidaLinha.setBackgroundColor(Color.DKGRAY);
                     }
 
-                    if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
 
                 }
             }

@@ -87,7 +87,6 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
                     selecionados.remove(adapterPosition);
                     holder.cvDoadorLinha.setBackgroundColor(Color.DKGRAY);
                 }
-                if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
 
                 ((MainActivity) context).startActionMode(new ActionMode.Callback() {
                     @Override
@@ -128,7 +127,6 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
 
                                                 Toast.makeText(context, "Deletado(s) com sucesso", Toast.LENGTH_SHORT).show();
                                                 dialogInterface.dismiss();
-                                                if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
                                             }
                                         }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
                                     @Override
@@ -148,7 +146,6 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
                     public void onDestroyActionMode(ActionMode actionMode) {
                         actionMode = null;
                         selectionModeOn = false;
-                        mActivityBar.setTitle( context.getString(R.string.donator_menu_name) );
                         mDoadorRecyclerView.setAdapter(DoadoresAdapter.this);
                         selecionados.clear();
 
@@ -173,8 +170,6 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
                         selecionados.remove(adapterPosition);
                         holder.cvDoadorLinha.setBackgroundColor(Color.DKGRAY);
                     }
-
-                    if(mActivityBar != null ) mActivityBar.setTitle(selecionados.size() + " Selecionado(s)");
 
                 }else{
                     Intent intent = new Intent(context, AdicionarDoacaoActivity.class);

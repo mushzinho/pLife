@@ -72,16 +72,15 @@ public class CampanhasAdapter extends RecyclerView.Adapter<CampanhasAdapter.myVi
             public boolean onLongClick(View view) {
 
                 selectionModeOn = true;
-                holder.cvCampanhaLinha.setBackgroundColor(Color.GRAY);
+                holder.cvCampanhaLinha.setBackgroundColor(Color.DKGRAY);
 
                 if(!selecionadas.contains(adapterPosition)){
                     selecionadas.add(adapterPosition);
 
                 }else{
                     selecionadas.remove(adapterPosition);
-                    holder.cvCampanhaLinha.setBackgroundColor(Color.WHITE);
+                    holder.cvCampanhaLinha.setBackgroundColor(Color.BLACK);
                 }
-                if(mActivityBar != null ) mActivityBar.setTitle(selecionadas.size() + " Selecionado(s)");
 
                 ((MainActivity) context).startActionMode(new ActionMode.Callback() {
                     @Override
@@ -122,7 +121,6 @@ public class CampanhasAdapter extends RecyclerView.Adapter<CampanhasAdapter.myVi
 
                                                 Toast.makeText(context, "Deletado(s) com sucesso", Toast.LENGTH_SHORT).show();
                                                 dialogInterface.dismiss();
-                                                if(mActivityBar != null ) mActivityBar.setTitle(selecionadas.size() + " Selecionado(s)");
                                             }
                                         }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
                                     @Override
@@ -142,7 +140,6 @@ public class CampanhasAdapter extends RecyclerView.Adapter<CampanhasAdapter.myVi
                     public void onDestroyActionMode(ActionMode actionMode) {
                         actionMode = null;
                         selectionModeOn = false;
-                        mActivityBar.setTitle( context.getString(R.string.donator_menu_name) );
                         mDoacoesRecyclerView.setAdapter(CampanhasAdapter.this);
                         selecionadas.clear();
 
@@ -159,16 +156,15 @@ public class CampanhasAdapter extends RecyclerView.Adapter<CampanhasAdapter.myVi
                 if(selectionModeOn){
 
 
-                    holder.cvCampanhaLinha.setBackgroundColor(Color.GRAY);
+                    holder.cvCampanhaLinha.setBackgroundColor(Color.BLACK);
 
                     if(!selecionadas.contains(adapterPosition)){
                         selecionadas.add(adapterPosition);
                     }else{
                         selecionadas.remove(adapterPosition);
-                        holder.cvCampanhaLinha.setBackgroundColor(Color.WHITE);
+                        holder.cvCampanhaLinha.setBackgroundColor(Color.DKGRAY);
                     }
 
-                    if(mActivityBar != null ) mActivityBar.setTitle(selecionadas.size() + " Selecionado(s)");
 
                 }
             }
