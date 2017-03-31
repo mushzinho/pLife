@@ -1,22 +1,23 @@
 package mush.com.br.blife;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import com.gordonwong.materialsheetfab.MaterialSheetFab;
+
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
-import com.mikepenz.iconics.context.IconicsLayoutInflater;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ResideMenuItem mSaidas;
     private ResideMenuItem mCampanhas;
     private ResideMenuItem mRankings;
+    private ResideMenuItem mConfigs;
     private Fragment mSelectedFrament;
 
     //TODO  RESULVER BUG DOS FRAGMENTS EMPILHAREM
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSaidas = new ResideMenuItem(this, R.drawable.ic_assignment_turned_in_black_48dp, R.string.saidas_menu_name);
         mCampanhas = new ResideMenuItem(this, R.drawable.ic_trending_up_black_48dp, R.string.campanhas_menu_name);
         mRankings = new ResideMenuItem(this, R.drawable.ic_assessment_black_48dp, R.string.rankings_menu_name);
+        mConfigs = new ResideMenuItem(this, R.drawable.ic_assessment_black_48dp, R.string.config_menu_name);
         //Rankings ainda não tem Fragment nem Atividade
 
 
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSaidas.setOnClickListener(this);
         mCampanhas.setOnClickListener(this);
         mRankings.setOnClickListener(this);
+        mConfigs.setOnClickListener(this);
 
 
         mResideMenu.addMenuItem(mHomeItem, ResideMenu.DIRECTION_RIGHT);
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mResideMenu.addMenuItem(mSaidas, ResideMenu.DIRECTION_RIGHT);
         mResideMenu.addMenuItem(mCampanhas, ResideMenu.DIRECTION_RIGHT);
         mResideMenu.addMenuItem(mRankings, ResideMenu.DIRECTION_RIGHT);
+        mResideMenu.addMenuItem(mConfigs, ResideMenu.DIRECTION_RIGHT);
 
     }
 
@@ -142,6 +147,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if(view == mRankings){
 
             changeFragment(new RankingFragment());
+
+        }else if(view == mConfigs){
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Configurações")
+                    .setPositiveButton("Salvar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            // TODO
+                        }
+                    })
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    })
+                    .setView(R.layout.configs_menu)
+                    .create()
+                    .show();
+
         }
         mResideMenu.closeMenu();
     }

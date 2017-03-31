@@ -21,6 +21,7 @@
     <string name="adicionar_doacao_titulo">Adicionar Doação</string>
     <string name="actv_selecionar_doador_hint">Doador</string>
     <string name="et_quantidade_bolsas_hint">Quantidade de Bolsas</string>
+    <string name="config_menu_name">Configs</string>
 
     <string-array name="sexos">
         <item>Masculino</item>
