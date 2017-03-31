@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mResideMenu = new ResideMenu(this);
         mResideMenu.attachToActivity(this);
         mResideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_LEFT);
-        mResideMenu.setBackground(R.color.menuColor);
+        mResideMenu.setBackground(R.drawable.menu_background);
 
         mHomeItem = new ResideMenuItem(this, R.drawable.ic_home_black_48dp, R.string.home_menu_name);
         mDoadorItem = new ResideMenuItem(this,R.drawable.ic_tag_faces_black_48dp, R.string.donator_menu_name);
@@ -82,7 +82,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCampanhas = new ResideMenuItem(this, R.drawable.ic_trending_up_black_48dp, R.string.campanhas_menu_name);
         mRankings = new ResideMenuItem(this, R.drawable.ic_assessment_black_48dp, R.string.rankings_menu_name);
         mConfigs = new ResideMenuItem(this, R.drawable.ic_assessment_black_48dp, R.string.config_menu_name);
-        //Rankings ainda não tem Fragment nem Atividade
+
+
+        mHomeItem.setBackgroundColor(Color.DKGRAY);
+        mDoadorItem.setBackgroundColor(Color.LTGRAY);
+        mDonation.setBackgroundColor(Color.DKGRAY);
+        mSaidas.setBackgroundColor(Color.LTGRAY);
+        mCampanhas.setBackgroundColor(Color.DKGRAY);
+        mRankings.setBackgroundColor(Color.LTGRAY);
+        mConfigs.setBackgroundColor(Color.DKGRAY);
 
 
         mHomeItem.setOnClickListener(this);
