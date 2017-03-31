@@ -65,6 +65,7 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
         holder.tvNomeCampanha.setText("Campanha : " + doacoes.get(position).getCampanhaDestino() );
         holder.tvDataDoacao.setText( doacoes.get(position).getData().toString() );
 
+
         final int adapterPosition = holder.getAdapterPosition();
 
         holder.cvDoacaoLinha.setOnLongClickListener(new View.OnLongClickListener() {

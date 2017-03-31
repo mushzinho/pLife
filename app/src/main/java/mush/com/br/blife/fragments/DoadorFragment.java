@@ -26,6 +26,7 @@ import mush.com.br.blife.MainActivity;
 import mush.com.br.blife.R;
 import mush.com.br.blife.adapter.DoadoresAdapter;
 import mush.com.br.blife.custom.Fab;
+import mush.com.br.blife.model.Doacao;
 import mush.com.br.blife.model.Doador;
 
 
@@ -62,7 +63,8 @@ public class DoadorFragment extends Fragment {
         super.onResume();
 
         List<Doador> doadores = Doador.listAll(Doador.class);
-        //Log.d("PAPA", "" + doadores.get(0).getId());
+      //  List<Doacao> ddd = doadores.get(0).getDoacoes();
+       // Log.d("PAPA", ddd.toString());
         RecyclerView.Adapter doadoresAdapter = new DoadoresAdapter(getActivity(), doadores, mDoadoresRecyclerView);
         mDoadoresRecyclerView.setAdapter(doadoresAdapter);
         mDoadoresRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

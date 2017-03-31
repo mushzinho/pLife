@@ -43,6 +43,11 @@ public class Doador extends SugarRecord {
         return tipoDeSangue;
     }
 
+    public List<Doacao> getDoacoes(){
+       return Doacao.find(Doacao.class, "doador = ?", getId().toString() );
+
+    }
+
     @Override
     public String toString() {
         return nome;
