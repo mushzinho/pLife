@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             final AlertDialog alert = builder.create();
             alert.show();
-            EditText nomeHemocentro = (EditText) alert.findViewById(R.id.et_hemocentro_nome);
+            final EditText nomeHemocentro = (EditText) alert.findViewById(R.id.et_hemocentro_nome);
             Button salvarButton = (Button) alert.findViewById(R.id.btn_salvar_conf);
             Button cancelarButton = (Button) alert.findViewById(R.id.btn_dismiss_conf);
 
@@ -216,7 +216,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             salvarButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
+
+                    SharedPreferences mypreferences = getSharedPreferences("confs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = mypreferences.edit();
+                    editor.putString("nome_hemocentro", nomeHemocentro.getText().toString());
+                    editor.commit();
+                    Toast.makeText(MainActivity.this, "Hemocentro Alterado, Aperte em Home para Reload", Toast.LENGTH_SHORT).show();
+                    alert.dismiss();
                 }
             });
             cancelarButton.setOnClickListener(new View.OnClickListener() {

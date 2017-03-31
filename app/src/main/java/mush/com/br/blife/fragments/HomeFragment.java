@@ -16,8 +16,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class HomeFragment extends Fragment {
 
-    private String mNomeHemocentro;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +27,9 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         SharedPreferences mypreferences = getActivity().getSharedPreferences("confs", MODE_PRIVATE);
-        mNomeHemocentro = mypreferences.getString("nome_hemocentro", "default");
-        TextView nomeHemocentro = (TextView) getActivity().findViewById(R.id.nome_hemocentro);
-        nomeHemocentro.setText(mNomeHemocentro);
+        String nomeHemocentro = mypreferences.getString("nome_hemocentro", "default");
+        TextView tvNomeHemocentro = (TextView) getActivity().findViewById(R.id.nome_hemocentro);
+        tvNomeHemocentro.setText(nomeHemocentro);
     }
 
     @Nullable
