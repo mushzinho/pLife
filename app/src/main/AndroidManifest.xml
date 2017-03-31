@@ -26,6 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+
         </activity>
 
         <activity
@@ -37,6 +38,9 @@
         <activity
             android:name=".AdicionarDoacaoActivity"
             android:label="@string/adicionar_doacao_titulo">
+
+
+
 
         </activity>
         <activity android:name=".AdicionarSaidaActivity">
