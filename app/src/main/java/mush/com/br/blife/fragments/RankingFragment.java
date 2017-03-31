@@ -10,9 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.orm.util.Collection;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import mush.com.br.blife.MainActivity;
 import mush.com.br.blife.R;
 import mush.com.br.blife.adapter.RankingAdapter;
 import mush.com.br.blife.model.Doacao;
@@ -35,6 +39,7 @@ public class RankingFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         mRvRanking = (RecyclerView) getActivity().findViewById(R.id.rv_lista_ranking);
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Ranking de Doadores");
     }
 
     @Nullable
@@ -49,18 +54,18 @@ public class RankingFragment extends Fragment {
         super.onResume();
 
         ArrayList<RankingItem> rankingItens = new ArrayList<>();
-        rankingItens.add(new RankingItem("Pablo", 20));
-        rankingItens.add(new RankingItem("Fernando", 28));
-        RankingAdapter rankingAdapter = new RankingAdapter(getActivity(), rankingItens);
 
-       // List<Doador> doador = Doador.findWithQuery(Doador.class, "Select * from Doador");
+
         List<Doador> doadores = Doador.listAll(Doador.class);
         for (Doador doador: doadores) {
 
-            //todo
+            RankingItem rankingItem = new RankingItem(doador.getNome(), doador.getDoacoes().size());
+            rankingItens.add(rankingItem);
 
         }
+        Collections.sort(rankingItens, Collections.reverseOrder());
 
+        RankingAdapter rankingAdapter = new RankingAdapter(getActivity(), rankingItens);
 
         mRvRanking.setAdapter(rankingAdapter);
         mRvRanking.setLayoutManager(new LinearLayoutManager(getActivity()));
