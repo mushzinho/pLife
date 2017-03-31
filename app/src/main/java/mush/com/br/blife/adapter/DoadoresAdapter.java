@@ -178,8 +178,8 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
 
                 }else{
                     Intent intent = new Intent(context, AdicionarDoacaoActivity.class);
-                    String UserId = doadores.get(adapterPosition).getId().toString();
-                    intent.putExtra("USER", UserId );
+                    int userId = Integer.parseInt( doadores.get(adapterPosition).getId().toString() );
+                    intent.putExtra("UserID", userId );
                     context.startActivity(intent);
                 }
             }

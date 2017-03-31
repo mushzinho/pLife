@@ -60,20 +60,15 @@ public class AdicionarDoacaoActivity extends AppCompatActivity {
         mQuantidadeDeBolsas = (EditText) findViewById(R.id.et_quantidade_bolsas);
         mPessoaDestino = (EditText) findViewById(R.id.et_pessoa_destino);
 
+
         Intent intent = getIntent();
-        int userId = 0;
-        if(!intent.getStringExtra("USER").equals("")){
-            userId = Integer.parseInt( intent.getStringExtra("USER") );
-        }
-
-
-        //Log.d("PAPA", ""+ userId);
+        int userId = intent.getIntExtra("UserID", 0);
+        Log.d("PAPA", "" + userId);
 
         if(userId > 0){
             doadorSelecionadoObjeto = Doador.findById(Doador.class, userId );
             mSelecionarDoador.setText(doadorSelecionadoObjeto.getNome());
             doadorSelecionado = true;
-           // Log.d("PAPA", ""+ userId);
         }
 
 
@@ -172,13 +167,18 @@ public class AdicionarDoacaoActivity extends AppCompatActivity {
             int quantidadeDeBolsas = Integer.parseInt(mQuantidadeDeBolsas.getText().toString());
             if (mSelectedDestinoDoacao == 0) {
                 String pacienteDestino = mPessoaDestino.getText().toString();
-                long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, pacienteDestino, null).save();
+                long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, pacienteDestino, null, doadorSelecionadoObjeto.getTipoDeSangue()).save();
                 if (res > 0) return true;
             } else if (mSelectedDestinoDoacao == 1) {
-                long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, Doacao.LIVRE, campanhaSelecionadaObjeto).save();
-                if (res > 0) return true;
+                if(!campanhaSelecionada){
+                    Toast.makeText(AdicionarDoacaoActivity.this, "Selecione uma campanha", Toast.LENGTH_SHORT).show();
+                }else {
+                    long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, Doacao.CAMPANHA, campanhaSelecionadaObjeto, doadorSelecionadoObjeto.getTipoDeSangue()).save();
+                    if (res > 0) return true;
+                }
+
             } else {
-                long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, Doacao.CAMPANHA, null).save();
+                long res = new Doacao(quantidadeDeBolsas, new Date(), doadorSelecionadoObjeto, Doacao.LIVRE, null, doadorSelecionadoObjeto.getTipoDeSangue()).save();
                 if (res > 0) return true;
             }
         }else{

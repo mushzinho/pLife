@@ -29,5 +29,19 @@
         app:srcCompat="@drawable/hemocentro_image"
         android:id="@+id/imageView" />
 
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Bolsas em Estoque: "/>
+
+    <TextView
+        android:id="@+id/tv_quantidade_total_bolsas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="10"/>
+
 
 </LinearLayout>

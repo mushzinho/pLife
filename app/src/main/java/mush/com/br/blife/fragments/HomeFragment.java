@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.orm.SugarRecord;
+
 import mush.com.br.blife.MainActivity;
 import mush.com.br.blife.R;
+import mush.com.br.blife.model.Doacao;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -33,6 +36,7 @@ public class HomeFragment extends Fragment {
         String nomeHemocentro = mypreferences.getString("nome_hemocentro", "default");
         TextView tvNomeHemocentro = (TextView) getActivity().findViewById(R.id.nome_hemocentro);
         tvNomeHemocentro.setText(nomeHemocentro);
+
     }
 
     @Nullable
@@ -42,4 +46,10 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //SugarRecord.findWithQuery()
+    }
 }

@@ -12,6 +12,7 @@ public class Doacao extends SugarRecord {
     private Doador doador;
     private String pacienteDestino;
     private Campanha campanhaDestino;
+    private String tipoSangueDoacao;
     @Ignore
     public static final String LIVRE = "LIVRE";
     @Ignore
@@ -20,12 +21,13 @@ public class Doacao extends SugarRecord {
     public Doacao() {
     }
 
-    public Doacao(int quantidadeBolsas, Date data, Doador doador, String pacienteDestino, Campanha campanhaDestino) {
+    public Doacao(int quantidadeBolsas, Date data, Doador doador, String pacienteDestino, Campanha campanhaDestino, String tipoSangueDoacao) {
         this.quantidadeBolsas = quantidadeBolsas;
         this.data = data;
         this.doador = doador;
         this.pacienteDestino = pacienteDestino;
         this.campanhaDestino = campanhaDestino;
+        this.tipoSangueDoacao = tipoSangueDoacao;
     }
 
     public int getQuantidadeBolsas() {
@@ -46,6 +48,10 @@ public class Doacao extends SugarRecord {
 
     public Campanha getCampanhaDestino() {
         return campanhaDestino;
+    }
+
+    public String getTipoSangueDoacao() {
+        return tipoSangueDoacao;
     }
 
     @Override
