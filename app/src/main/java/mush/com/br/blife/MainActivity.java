@@ -12,8 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -27,6 +25,8 @@ import mush.com.br.blife.fragments.DoacaoFragment;
 import mush.com.br.blife.fragments.HomeFragment;
 import mush.com.br.blife.fragments.RankingFragment;
 import mush.com.br.blife.fragments.SaidasFragment;
+import mush.com.br.blife.model.Doacao;
+import mush.com.br.blife.model.Doador;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ResideMenuItem mConfigs;
     private Fragment mSelectedFrament;
 
-    //TODO  RESULVER BUG DOS FRAGMENTS EMPILHAREM
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(savedInstanceState == null){
             mSelectedFrament = new HomeFragment();
-           displayHomeFragment(mSelectedFrament);
+           changeFragmentNoStack(mSelectedFrament);
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -120,43 +119,90 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view == mHomeItem){
 
-            mSelectedFrament = new HomeFragment();
-            changeFragment(mSelectedFrament);
+            if(! (mSelectedFrament instanceof HomeFragment) ){
+
+                mSelectedFrament = new HomeFragment();
+                changeFragment(mSelectedFrament);
+
+            }else{
+                mSelectedFrament = new HomeFragment();
+                changeFragmentNoStack(mSelectedFrament);
+
+            }
+
 
 
         }else if(view == mDoadorItem) {
 
-            mSelectedFrament = new DoadorFragment();
-            changeFragment(mSelectedFrament);
+            if(! (mSelectedFrament instanceof DoadorFragment) ){
 
+                mSelectedFrament = new DoadorFragment();
+                changeFragment(mSelectedFrament);
+
+            }else{
+                mSelectedFrament = new DoadorFragment();
+                changeFragmentNoStack(mSelectedFrament);
+            }
 
         }else if(view == mDonation){
 
-            changeFragment(new DoacaoFragment());
+            if(! (mSelectedFrament instanceof DoacaoFragment) ){
+
+                mSelectedFrament = new DoacaoFragment();
+                changeFragment(mSelectedFrament);
+
+            }else{
+                mSelectedFrament = new DoacaoFragment();
+                changeFragmentNoStack(mSelectedFrament);
+            }
 
         }else if(view == mSaidas){
 
-            changeFragment(new SaidasFragment());
+            if(! (mSelectedFrament instanceof SaidasFragment) ){
+
+                mSelectedFrament = new SaidasFragment();
+                changeFragment(mSelectedFrament);
+
+            }else{
+                mSelectedFrament = new SaidasFragment();
+                changeFragmentNoStack(mSelectedFrament);
+            }
 
 
         }else if(view == mCampanhas){
 
-            changeFragment(new CampanhasFragment());
+            if(! (mSelectedFrament instanceof CampanhasFragment) ){
+
+                mSelectedFrament = new CampanhasFragment();
+                changeFragment(mSelectedFrament);
+
+            }else{
+                mSelectedFrament = new CampanhasFragment();
+                changeFragmentNoStack(mSelectedFrament);
+            }
 
 
         }else if(view == mRankings){
 
-            changeFragment(new RankingFragment());
+            if(! (mSelectedFrament instanceof RankingFragment) ){
+
+                mSelectedFrament = new RankingFragment();
+                changeFragment(mSelectedFrament);
+
+            }else{
+                mSelectedFrament = new RankingFragment();
+                changeFragmentNoStack(mSelectedFrament);
+            }
 
         }else if(view == mConfigs){
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Configurações")
                     .setPositiveButton("Salvar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
-                            // TODO
+                            //TODO Implementar
                         }
                     })
                     .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -184,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //This duplication is because addToBackStack in first fragment
     //causes a ugly appearence when back button is pressed.
-    void displayHomeFragment(Fragment targetFragment){
+    void changeFragmentNoStack(Fragment targetFragment){
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_place,targetFragment, "home_fragment")
