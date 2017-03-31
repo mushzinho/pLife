@@ -58,7 +58,7 @@ public class DoacoesAdapter extends RecyclerView.Adapter<DoacoesAdapter.myViewHo
 
 
 
-        holder.ivDoacaoImage.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_ambulance).color(Color.BLUE).sizeDp(50));
+        holder.ivDoacaoImage.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_heart).color(Color.CYAN).sizeDp(50));
 
         holder.tvDoacaoDoadorNome.setText("Doador : " + doacoes.get(position).getDoador().getNome() );
         holder.tvPacienteDestino.setText("Destino: " +  doacoes.get(position).getPacienteDestino() );

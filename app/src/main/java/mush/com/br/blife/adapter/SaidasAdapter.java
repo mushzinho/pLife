@@ -56,7 +56,7 @@ public class SaidasAdapter extends RecyclerView.Adapter<SaidasAdapter.myViewHold
     public void onBindViewHolder(final myViewHolder holder, int position) {
 
 
-        holder.ivSaidasImagem.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_chevron_left).color(Color.BLUE).sizeDp(50));
+        holder.ivSaidasImagem.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_reply_all).color(Color.CYAN).sizeDp(50));
 
         holder.tvNomeHospital.setText("Hospital : " + saidasBolsas.get(position).getHospital());
         if(saidasBolsas.get(position).getBolsasPorTipo() != null){

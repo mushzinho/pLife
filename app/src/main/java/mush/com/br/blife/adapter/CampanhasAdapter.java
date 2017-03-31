@@ -58,7 +58,7 @@ public class CampanhasAdapter extends RecyclerView.Adapter<CampanhasAdapter.myVi
 
 
 
-        holder.ivCampanhaImage.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_caret_square_o_up).color(Color.BLUE).sizeDp(50));
+        holder.ivCampanhaImage.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_check_circle).color(Color.CYAN).sizeDp(50));
 
         holder.tvCampanhaNome.setText("Campanha : " + campanhas.get(position).getNome() );
         holder.tvCampanhaTipoSangue.setText("Tipo de Sangue: " +  campanhas.get(position).getTipoSangue() );
