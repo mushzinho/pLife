@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSaidas = new ResideMenuItem(this, R.drawable.ic_assignment_turned_in_black_48dp, R.string.saidas_menu_name);
         mCampanhas = new ResideMenuItem(this, R.drawable.ic_trending_up_black_48dp, R.string.campanhas_menu_name);
         mRankings = new ResideMenuItem(this, R.drawable.ic_assessment_black_48dp, R.string.rankings_menu_name);
-        mConfigs = new ResideMenuItem(this, R.drawable.ic_assessment_black_48dp, R.string.config_menu_name);
+        mConfigs = new ResideMenuItem(this, R.drawable.ic_settings_black_48dp, R.string.config_menu_name);
 
 
         mHomeItem.setBackgroundColor(Color.DKGRAY);
