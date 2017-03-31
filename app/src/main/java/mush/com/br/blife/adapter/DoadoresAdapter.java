@@ -61,9 +61,9 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
 
         String sexo = doadores.get(position).getSexo();
         if(sexo.equals("Masculino")){
-            holder.ivSexo.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_male).color(Color.BLUE).sizeDp(50));
+            holder.ivSexo.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_male).color(Color.CYAN).sizeDp(50));
         }else{
-            holder.ivSexo.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_female).color(Color.BLUE).sizeDp(50));
+            holder.ivSexo.setImageDrawable(new IconicsDrawable(context, FontAwesome.Icon.faw_female).color(Color.CYAN).sizeDp(50));
         }
 
         holder.tvNome.setText( context.getString(R.string.add_doador_nome_hint)+ ": " + doadores.get(position).getNome());
