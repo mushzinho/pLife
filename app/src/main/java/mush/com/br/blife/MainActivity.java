@@ -1,6 +1,7 @@
 package mush.com.br.blife;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.Toast;
 
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(new IconicsDrawable(this, FontAwesome.Icon.faw_bars).color(Color.RED).sizeDp(20));
         }
+
 
 
         mResideMenu = new ResideMenu(this);
@@ -198,22 +204,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Configurações")
-                    .setPositiveButton("Salvar", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+                    .setView(R.layout.configs_menu);
 
-                            //TODO Implementar
-                        }
-                    })
-                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    })
-                    .setView(R.layout.configs_menu)
-                    .create()
-                    .show();
+            final AlertDialog alert = builder.create();
+            alert.show();
+            EditText nomeHemocentro = (EditText) alert.findViewById(R.id.et_hemocentro_nome);
+            Button salvarButton = (Button) alert.findViewById(R.id.btn_salvar_conf);
+            Button cancelarButton = (Button) alert.findViewById(R.id.btn_dismiss_conf);
+
+
+            salvarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
+                }
+            });
+            cancelarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alert.dismiss();
+                }
+            });
+
+
 
         }
         mResideMenu.closeMenu();
