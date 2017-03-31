@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,15 +61,20 @@ public class AdicionarDoacaoActivity extends AppCompatActivity {
         mPessoaDestino = (EditText) findViewById(R.id.et_pessoa_destino);
 
         Intent intent = getIntent();
-        int userId = intent.getIntExtra("UserId", 0);
-
-        if(userId > 0){
-            doadorSelecionadoObjeto = Doador.findById(Doador.class, userId + 1);
-            mSelecionarDoador.setText(doadorSelecionadoObjeto.getNome());
-            doadorSelecionado = true;
+        int userId = 0;
+        if(!intent.getStringExtra("USER").equals("")){
+            userId = Integer.parseInt( intent.getStringExtra("USER") );
         }
 
 
+        //Log.d("PAPA", ""+ userId);
+
+        if(userId > 0){
+            doadorSelecionadoObjeto = Doador.findById(Doador.class, userId );
+            mSelecionarDoador.setText(doadorSelecionadoObjeto.getNome());
+            doadorSelecionado = true;
+           // Log.d("PAPA", ""+ userId);
+        }
 
 
         mDestinoDoacaoRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,7 @@ public class DoadorFragment extends Fragment {
         super.onResume();
 
         List<Doador> doadores = Doador.listAll(Doador.class);
+        //Log.d("PAPA", "" + doadores.get(0).getId());
         RecyclerView.Adapter doadoresAdapter = new DoadoresAdapter(getActivity(), doadores, mDoadoresRecyclerView);
         mDoadoresRecyclerView.setAdapter(doadoresAdapter);
         mDoadoresRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

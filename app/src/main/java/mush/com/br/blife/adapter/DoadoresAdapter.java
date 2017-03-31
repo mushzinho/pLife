@@ -57,7 +57,7 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
     }
 
     @Override
-    public void onBindViewHolder(final myViewHolder holder, final int position) {
+    public void onBindViewHolder(final myViewHolder holder, int position) {
 
         String sexo = doadores.get(position).getSexo();
         if(sexo.equals("Masculino")){
@@ -178,8 +178,8 @@ public class DoadoresAdapter extends RecyclerView.Adapter<DoadoresAdapter.myView
 
                 }else{
                     Intent intent = new Intent(context, AdicionarDoacaoActivity.class);
-                    intent.putExtra("UserId", adapterPosition );
-                    //Log.d("PAPA", "AP:" + adapterPosition + "POS:" + position);
+                    String UserId = doadores.get(adapterPosition).getId().toString();
+                    intent.putExtra("USER", UserId );
                     context.startActivity(intent);
                 }
             }
