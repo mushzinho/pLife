@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import mush.com.br.blife.MainActivity;
 import mush.com.br.blife.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -25,6 +26,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Home");
 
         SharedPreferences mypreferences = getActivity().getSharedPreferences("confs", MODE_PRIVATE);
         String nomeHemocentro = mypreferences.getString("nome_hemocentro", "default");
