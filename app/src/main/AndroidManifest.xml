@@ -31,8 +31,7 @@
 
         <activity
             android:name=".AdicionarDoadorActivity"
-            android:label="@string/adicionar_doador_titulo"
-            android:parentActivityName=".MainActivity">
+            android:label="@string/adicionar_doador_titulo">
 
         </activity>
         <activity

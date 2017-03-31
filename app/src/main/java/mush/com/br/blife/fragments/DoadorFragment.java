@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 
 
 import java.util.List;
@@ -27,15 +30,11 @@ import mush.com.br.blife.model.Doador;
 
 public class DoadorFragment extends Fragment {
 
-    private MaterialSheetFab mMaterialSheetFab;
     private RecyclerView mDoadoresRecyclerView;
-    private RecyclerView.Adapter mDoadoresAdapter;
+    private FloatingActionButton mFabDoador;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-    public MaterialSheetFab getMaterialSheet(){
-        return mMaterialSheetFab;
     }
 
     @Override
@@ -44,23 +43,17 @@ public class DoadorFragment extends Fragment {
 
         ((MainActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.donator_menu_name));
 
-        Fab fab = (Fab) getActivity().findViewById(R.id.fab_doador);
-        View sheetView = getActivity().findViewById(R.id.fab_sheet);
-        View overlay = getActivity().findViewById(R.id.dim_overlay);
-        mMaterialSheetFab = new MaterialSheetFab<>(fab, sheetView, overlay, Color.WHITE, Color.WHITE);
-        mMaterialSheetFab.showFab(-10,-10);
 
-        View myTv = (TextView) getActivity().findViewById(R.id.tvNovo);
-        myTv.setOnClickListener(new View.OnClickListener() {
+        mDoadoresRecyclerView = (RecyclerView) getActivity().findViewById(R.id.rv_doadores);
+        mFabDoador = (FloatingActionButton) getActivity().findViewById(R.id.fab_doador);
+        mFabDoador.setImageDrawable( new IconicsDrawable(getActivity(), FontAwesome.Icon.faw_plus).sizeDp(20));
+        mFabDoador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mMaterialSheetFab.hideSheet();
                 Intent intent = new Intent(getActivity(), AdicionarDoadorActivity.class);
                 getActivity().startActivity(intent);
             }
         });
-
-        mDoadoresRecyclerView = (RecyclerView) getActivity().findViewById(R.id.rv_doadores);
     }
 
     @Override
@@ -68,8 +61,8 @@ public class DoadorFragment extends Fragment {
         super.onResume();
 
         List<Doador> doadores = Doador.listAll(Doador.class);
-        mDoadoresAdapter = new DoadoresAdapter(getActivity(), doadores, mDoadoresRecyclerView);
-        mDoadoresRecyclerView.setAdapter(mDoadoresAdapter);
+        RecyclerView.Adapter doadoresAdapter = new DoadoresAdapter(getActivity(), doadores, mDoadoresRecyclerView);
+        mDoadoresRecyclerView.setAdapter(doadoresAdapter);
         mDoadoresRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mDoadoresRecyclerView.setHasFixedSize(true);
 

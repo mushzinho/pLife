@@ -163,25 +163,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .commit();
     }
 
-    @Override
-    public void onBackPressed() {
-        if(mSelectedFrament instanceof DoadorFragment){
-            MaterialSheetFab materialSheetFab = ((DoadorFragment) mSelectedFrament).getMaterialSheet();
-
-            if( materialSheetFab.isSheetVisible() ){
-                materialSheetFab.hideSheet();
-            }else{
-                super.onBackPressed();
-            }
-        }else{
-            super.onBackPressed();
-        }
-
-    }
-
-    public ResideMenu getResideMenu(){
-        return mResideMenu;
-    }
 
     public Fragment getmSelectedFrament() {
         return mSelectedFrament;
